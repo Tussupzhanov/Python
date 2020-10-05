@@ -19,4 +19,12 @@
 
 """
 
-ip = "192.168.3.1"
+ip = "192.168.3.24"
+ip_split = ip.split(".")
+ip1 = int (ip_split[0])
+ip2 = int (ip_split[1])
+ip3 = int (ip_split[2])
+ip4 = int (ip_split[3])
+print(f'''
+{ip1:<10} {ip2:<10} {ip3:<10} {ip4:<10}
+{ip1:010b} {ip2:010b} {ip3:010b} {ip4:010b}''')
