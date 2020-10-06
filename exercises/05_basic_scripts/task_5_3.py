@@ -7,6 +7,7 @@
 * номере интерфейса (тип и номер, вида Gi0/3)
 * номер VLANа (для режима trunk будет вводиться список VLANов)
 
+
 В зависимости от выбранного режима, на стандартный поток вывода,
 должна возвращаться соответствующая конфигурация access или trunk
 (шаблоны команд находятся в списках access_template и trunk_template).
@@ -50,8 +51,11 @@ switchport mode trunk
 switchport trunk allowed vlan 2,3,4,5
 """
 
+mode = input("Введите режим работы интерфейса (access/trunk): ")
+interface = input("Введите тип и номер интерфейса: ")
+vlan_num = input("Введите номер влан(ов): ")
 access_template = [
-    "switchport mode access",
+    'switchport mode access',
     "switchport access vlan {}",
     "switchport nonegotiate",
     "spanning-tree portfast",
@@ -60,6 +64,12 @@ access_template = [
 
 trunk_template = [
     "switchport trunk encapsulation dot1q",
-    "switchport mode trunk",
-    "switchport trunk allowed vlan {}",
+    "switchport mode trunk" ,
+    "switchport trunk allowed vlan {}"
 ]
+
+dictionary = {'access': access_template,
+              'trunk': trunk_template
+}
+
+print("interface:" + interface)
